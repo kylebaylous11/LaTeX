@@ -1,0 +1,351 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+%\usepackage{float}
+\usepackage{caption}
+\usepackage[font=footnotesize]{caption}
+%\usepackage{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[dvips]{epsfig}
+
+\usepackage[left=1in,right=1in,bottom=1.5in,top=1.0in]{geometry}
+\setlength{\topmargin}{0.1in}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\begin{document} 
+
+\begin{titlepage}
+   \begin{center}
+   
+       \vspace*{1cm}
+ 
+       \textbf{\Large{AMS 333: Homework 2}}
+ 
+       \vspace{0.5cm}
+ 
+       \vspace{1.5cm}
+ 
+       \textbf{\Large{Kyle Baylous}}\\
+       \vspace{1.5cm}
+       \textbf{\Large{SBU ID: 111374388}}
+ 
+       \vfill
+
+ 
+       \vspace{0.8cm}
+ 
+      % \includegraphics[width=0.4\textwidth]
+ 
+       Applied Mathematics and Statistics\\
+       Stony Brook University\\
+       10/24/19
+ 
+   \end{center}
+\end{titlepage}
+
+\section{Introduction to Population Dynamics}
+
+A specific problem worth analyzing within the field of biology is the dynamics of how populations of organisms fluctuate over time. Such populations and growth systems can be analyzed using mathematical models, but it is critical to first understand how certain organisms reproduce and how certain populations of these organisms grow as time goes on.\\
+\\Different types of reproduction exist for the countless amount of organisms that inhabit our planet. For instance, we can consider the unique patterns of population growth for single-celled organisms and multi-cellular organisms. For single-celled organisms, such as bacteria, reproduction occurs through asexual cell division mainly, and the process can be considered symmetric or asymmetric depending on what case is being considered [1]. Despite some of these differences, organisms that reproduce like this will grow and divide continuously, given that there is a proper supply of resources such as space and nutrients. Multi-cellular organisms, on the other hand, such as insects, plants or birds, can have much more complicated life cycles and reproduction patterns [1]. For instance, many insects undergo distinct stages of development during specific periods of their life cycle that are impacted by environmental conditions [1]. This means that adults of a certain population may only be found during small periods of time and the resulting population growth each year is considered to be discrete and step-wise, where the adult population is counted during a defined period of time. Life cycles like this, or similar ones, are followed by many insects, often cycling through generations continuously and following certain annual patterns. When considering multi-cellular organisms like fish, we see that such organisms can follow life cycles that feature short reproduction periods followed by death shortly afterwards [1]. However, most reptiles and birds have annual breeding patterns, where eggs are laid at very specific points during the year. Additionally, large land mammals can be described as having well-defined birthing and mating seasons, while smaller mammals will breed continuously if placed in an environment that is appropriate and suitable for the organisms. Finally, when it comes to us humans, we can consider ourselves to be a continuously reproducing species [1]. For the current modeling application, which focuses mainly on squirrel population growth, we can use a variety of models to try to analyze and predict how the population will fluctuate and behave at future points in time.
+
+\section{The Exponential Growth Model}
+We can model continuously reproducing species, such as humans, certain plants and single-celled organisms like bacteria, using the exponential growth model shown below \
+
+\begin{gather*}
+N(t) = N_0*2^{t/T}
+\end{gather*}
+
+where t is the time, T is the doubling time, and $N_0$ is the initial population at t = 0. 
+
+This equation, which is derived from the famous Malthus equation [2], can be used to model the Grey squirrel population of interest. It is important to note that there is one equilibrium point at $N^{*}=0$ for this model. When considering a positive growth rate, we get exponential growth and the equilibrium point is unstable. However, when considering a negative growth rate, we get exponential decay for which the equilibrium point is stable.
+
+%- Describe population growth as an intro, famous malthus equation, reference the lectures and put ref. at bottom
+%- Move into the specific case with squirrels
+
+\subsection*{Squirrel Population Growth Using the Exponential Growth Model}
+It is known that a Grey squirrel population was introduced in Great Britain about 40 years ago and that their population doubles every six years. Currently, in 2019, the population is 769,020. We can use exponential growth to model the squirrel population after 2019, knowing that the doubling time is six years (T=6) and that the initial population is 10,000 ($N_0$ = 10,000 according to squirrel data for 1980).\\
+
+Therefore, a function N(t) that models the Grey squirrel population can be written generally as
+
+\begin{gather*}
+N(t) = N_0*2^{t/T}
+\end{gather*}
+
+where $N_0$ = 10,000 and T = 6. Therefore, the model can be written as\
+
+\begin{gather*}
+N(t) = 10,000*2^{t/6}
+\end{gather*}
+
+When estimating the squirrel population 10 years from now, we can simply substitute the value of 49 into our variable t and find N(49). This is because we are starting at the initial population found in 1980 and are aiming to estimate the population 10 years from now, which would be 2029. Therefore, 2029 would be 49 years after 1980. The squirrel population 10 years from now, using the function N(t), can then be found as follows 
+
+\begin{gather*}
+N(49) = 10,000*2^{49/6} \approx 2,873,502	
+\end{gather*}
+
+The actual squirrel population data can be loaded in MATLAB and a plot can be made of time versus population size starting at t = 0 so that the time axis represents years after 1980. Additionally, on the same plot, the exponential model N(t) can be graphed and compared to the previously plotted data based on the recorded population sizes each year since 1980. 
+%insert plot of population vs time with data points and N(t) plot, this is figure 1
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Fig_1.jpg}
+   \captionof{figure}{Plot showing squirrel population versus time. The observed squirrel data are represented by dark blue circles, while the exponential growth model is represented by the light blue curve. Refer to Appendix A.1 for MATLAB code.} 
+\end{center}
+
+Based on the plotted data and exponential model, the model is not appropriate for predicting the future dynamics of the population. The exponential model does generally fit the shape of the squirrel data once plotted initially, but it is clear that the exponential model deviates from the observed data shortly after t=15. More specifically, the exponential model (function N(t)) severely underestimates the population from about t=15 to approximately t=35, where it then begins to overestimate the population size substantially. There are also fluctuations in the squirrel population size that are not accounted for by the exponential model. Overall, the exponential model clearly deviates from the original data as time continues to increase, thereby making the model insufficient for the Grey squirrel population growth.\\
+
+%insert plot of population vs time with data points and N(t) plot for additional 10 years, this is figure 2
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure2.jpg}
+   \captionof{figure}{Plot showing squirrel population versus time for an additional 10 years. The observed squirrel data are represented by dark blue circles, while the exponential growth model is represented by the light blue curve. It is clear to see that the exponential model deviates substantially from the general trend of the observed data. Refer to Appendix A.1 for MATLAB code.} 
+\end{center}\
+
+After plotting the exponential model for an additional 10 years, it is clear that the exponential model deviates substantially from the general trend of the data curve. In other words, from the perspective of a mathematical biologist, the Grey squirrel population is severely over-estimated by the exponential model as N(t) continues to grow without bound. If this model did accurately predict the future outcome of the population, we should see the observed data trend coinciding with the exponential curve such that if we were to extrapolate the observed data, we would see the model values in close proximity to our extrapolated values. Lastly, it seems as though the squirrel population may stop growing, or plateau, around one million squirrels. However, the exponential model predicts a population size of over two and a half million squirrels about 10 years after 2019. It seems that a model which takes carrying capacity of the environment into consideration would be more suitable for modeling the Grey squirrel population growth and many other realistic population models in general since we do not usually observe exponential growth in nature.
+ 
+\section{The Logistic Growth Model}
+We can analyze continuously reproducing species with another population growth model. This other model utilizes the logistic growth equation. For this model, we can consider habitat constraints that limit the population growth of the species being studied. This population growth will now follow a logistic equation that includes a per capita rate of increase, $R_0$, and a carrying capacity, K, as shown below\
+
+%Show the ODE
+\begin{gather*}
+\dfrac{dN}{dt} = R_0N(t)\Big[1 - \dfrac{N(t)}{K}\Big] 
+\end{gather*}\\
+
+with solution 
+\begin{gather*}
+N(t) = \dfrac{KN_0}{N_0+(K-N_0)e^{-R_0t}}
+\end{gather*}
+
+This equation, which was introduced by Verhulst in 1838 [2], can now be used to model the Grey squirrel population of interest while taking the maximal environment capacity into consideration.
+
+%Describe logistic population growth as an intro, what carrying capacity is, reference the lectures and put ref. at bottom
+%Move into the specific case with squirrels and how we can now model the squirrel population with the logistic equation
+
+\subsection*{Squirrel Population Growth Using the Logistic Equation}
+Since the squirrel population growth is now limited by habitat constraints, which occurs naturally in the environment, we will use a logistic equation with K = 1,000,000 squirrels and $N_0$ = 10,000. The growth rate can be found by manipulating the logistic equation solution (N(t)) by choosing and using a particular point from the supplied squirrel data to solve for $R_0$. It is important to note that the estimation of $R_0$ may be slightly different depending on what data point is chosen. This can be done as shown below using N(20) = 156,380 :\\
+
+%Show steps to solve for R_0, show this work in LaTeX, state final answer for R_0
+\begin{flushleft}
+Start with N(t) equation:
+\end{flushleft}
+\begin{gather*}
+N(t) = \dfrac{KN_0}{N_0+(K-N_0)e^{-R_0t}} \\
+\end{gather*}
+Substitute in known values:
+\begin{gather*}
+156,380 = \dfrac{1,000,000*10,000}{10,000+(1,000,000-10,000)e^{-R_0*20}} \\
+\end{gather*}\
+Simplify:	
+\begin{gather*}
+63,946.79627 = 10,000+(990,000)e^{-R_0*20} \\
+\end{gather*}
+Subtract over 10,000:		
+\begin{gather*}\
+53,946.79627 = 990,000e^{-R_0*20} \\
+\end{gather*}
+Divide and take natural log of both sides:	
+\begin{gather*}\
+-2.9097 = -R_0*20 \\
+\end{gather*}
+Solve for $R_0$:	
+\begin{gather*}
+R_0 = .145485 \approx .145
+\end{gather*}\
+
+After selecting this data point, it was determined that the estimated value for $R_0$ yielded a model that fit the observed data very well, so the estimated value for $R_0$ was used throughout the rest of the analysis. We can estimate the year until the population reaches 90\% of its maximum by again manipulating the logistic equation. We recently solved for the growth rate of the population per year, and now with the other parameters ($N_0$ and K), we can set N(t) = 900,000 and solve for t as follows:\\\
+
+%Show LaTeX work to solve for t when N(t) = 900,000
+\begin{flushleft}
+Start with N(t) equation:
+\end{flushleft}
+\begin{gather*}
+N(t) = \dfrac{KN_0}{N_0+(K-N_0)e^{-R_0t}} \\
+\end{gather*}
+Substitute in known values:
+\begin{gather*}
+900,000 = \dfrac{1,000,000*10,000}{10,000+(1,000,000-10,000)e^{-.145t}} \\
+\end{gather*}\
+Simplify:	
+\begin{gather*}
+11,111.1111 = 10,000+(990,000)e^{-.145t} \\
+\end{gather*}
+Subtract over 10,000:		
+\begin{gather*}\
+1,111.1111 = 990,000e^{-.145t} \\
+\end{gather*}
+Divide and take natural log of both sides:	
+\begin{gather*}\
+-6.792 = -.145t \\
+\end{gather*}
+Solve for t:	
+\begin{gather*}
+t = 46.719 \approx 47 
+\end{gather*}
+
+\begin{center}
+So, it takes about 47 years to reach 90\% of the population's maximum, which is the year 2027.
+\end{center}\
+
+The steady states are found by setting $\dfrac{dN}{dt}$ equal to zero and solving for $N^{*}$  as follows:\\\
+
+%Show LaTeX work to find fixed points/steady states, go along with Barley's lecture notes
+\begin{flushleft}
+Start with $\dfrac{dN}{dt}$ equation:
+\end{flushleft}
+\begin{gather*}
+f(N) = R_0N\Big[1 - \dfrac{N}{K}\Big]  \\
+\end{gather*}
+Set f(N) equal to zero:
+\begin{gather*}
+f(N) = R_0N\Big[1 - \dfrac{N}{K}\Big] = 0 \\
+\end{gather*}\
+Solve for $N^*$:	
+\begin{gather*}
+ R_0N = 0,\ 1 - \dfrac{N}{K} = 0\\
+ N^*_1 = 0,\\ N^*_2 = K\\
+\end{gather*}
+
+
+Therefore, we can see that the logistic equation in general has two equilibrium points or steady states, $N^*_1$ = 0 and $N^*_2$ = K. For the squirrel population under analysis, the steady states would specifically be $N^*_1$ = 0 and $N^*_2$ = 1,000,000. We can also examine the stability of these two points by taking the derivative of f(N) and substituting in our $N^*$ solutions:\\\
+
+\begin{gather*}\
+f'(N) = R_0\Big[1 - \dfrac{2N}{K}\Big] = 0 \\
+\end{gather*}
+Find f'($N^*_1$) and f'($N^*_2$):
+\begin{gather*}\
+ f'(N^*_1) = f'(0) = R_0, \ f'(N^*_2) = f'(K) = -R_0 \\
+\end{gather*}
+\begin{center}
+Therefore, when we consider $R_0$ $>$ 0, $N^*_1$ = 0 is unstable, while $N^*_2$ = K is asymptotically stable.
+\end{center}\
+
+We can analyze these steady states in terms of biological interpretations when considering if $R_0$ is less than, greater than or equal to zero. If the growth rate was equal to zero, then there would be no growth in the population (population stays at initial size) and we would have no growth model to analyze. When considering $N^{*}=0$ given the condition that $R_0$ is less than zero, this steady state is stable, and in terms of the biological population, represents extinction. When considering $N^{*}=0$ given the condition that $R_0$ is greater than zero, this steady state is unstable, and in terms of the biological population, represents a condition that is nonexistent. When considering $N^{*}=K$ given the condition that $R_0$ is less than zero, this steady state is unstable, and in terms of the biological population, represents a decrease until extinction. When considering $N^{*}=K$ given the condition that $R_0$ is greater than zero, this steady state is stable, and in terms of the biological population, represents establishment or persistence of the population.\\\ 
+
+The squirrel population data, expected growth curve with the logistic equation model and the steady-state solutions can all be plotted together as shown in Figure 3. \\
+
+%insert plot of population vs time with data points and N(t) plot for logistic groth, this is figure 3
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure3.jpg}
+   \captionof{figure}{Plot showing squirrel population versus time for the logistic growth model. The observed squirrel data are represented by dark blue circles, while the logistic model  is represented by the black curve. The horizontal pink and red lines represent the steady states. It is clear to see that the logistic growth equation models the Grey squirrel population well. Refer to Appendix A.2 for MATLAB code.} 
+\end{center}\
+
+This model is much better for predicting the population 10 years from now since the model both predicts the squirrel population accurately and coincides with the data exceptionally well. In other words, the model is a very good fit to the data since the trend of the observed data follows the trend of the logistic model very closely. Additionally, this model is bounded by the carrying capacity, K, which is represented by the steady-state solution when $N^{*}$ = K = 1,000,000. This is much more accurate in nature since population growth is essentially always going to be limited by nutrition, physical space and other aspects of the environment that induce a maximal population size. \\\
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure3_part2.jpg}
+   \captionof{figure}{Plot showing squirrel population versus time for the logistic growth model for an additional 10 years. The observed squirrel data are represented by dark blue circles, while the logistic model is represented by the black curve. The horizontal pink and red lines represent the steady states. The logistic equation models the Grey squirrel population well and predicts future population behavior accurately since the behavior of the observed data would likely coincide with the model behavior for the years following 2019. Refer to Appendix A.2 for MATLAB code.} 
+\end{center}\
+
+The estimated value for $R_0$ can be used to find how long the biologist should wait before the squirrel population reaches its maximal value. This can be calculated by first setting N(t) equal to 999,999 and then solving for t being that we have all of the necessary parameters for the logistic equation model ($N_0$, K and $R_0$). We must approximate the maximal value of 1 million by using 999,999 because the model only approaches the carrying capacity asymptotically.\\\\\\\\\\\\\\\
+%Show LaTeX work to find time for approx max population
+\begin{flushleft}
+Start with N(t) equation:
+\end{flushleft}
+\begin{gather*}
+N(t) = \dfrac{KN_0}{N_0+(K-N_0)e^{-R_0t}} \\
+\end{gather*}
+Substitute in known values:
+\begin{gather*}
+999,999 = \dfrac{1,000,000*10,000}{10,000+(1,000,000-10,000)e^{-.145t}} \\
+\end{gather*}\
+Simplify:	
+\begin{gather*}
+10,000.01 = 10,000+(990,000)e^{-.145t} \\
+\end{gather*}
+Subtract over 10,000:		
+\begin{gather*}\
+.01 = 990,000e^{-.145t} \\
+\end{gather*}
+Divide and take natural log of both sides:	
+\begin{gather*}\
+-18.4106 = -.145t \\
+\end{gather*}
+Solve for t:	
+\begin{gather*}
+t = 126.9699 \approx 127 
+\end{gather*}
+
+\begin{center}
+So, the biologist should wait about 127 years for the population to reach its approximate maximum size, which is until the year 2107.
+\end{center}\
+
+\section{The Forward Euler Method}
+In the previous cases, we were able to analytically solve the differential equations so that we could reach an exact form for N(t). This is not always possible though, and in such cases, we can simulate the growth of the population under study if we know the initial conditions and rate of change of the population.  The simplest method for solving and simulating a dynamical system with these ideas in mind is the Forward Euler method.
+
+%Describe euler method as an intro, what we are essentially doing with tangent lines, reference the lectures and put ref. at bottom
+%Move into the specific case with squirrels and how we can simulate the squirrel growth with starting conditions and the estimated rate of change
+
+\subsection*{Squirrel Population Growth Using the Euler Method}
+Using the Euler method along with the logistic equation, the growth of the squirrel population density can be simulated starting from an initial population size of 10,000 while using time steps per year and the same values for $R_0$ and K as used previously. We can also choose a variety of values for $\Delta t$ to analyze how the plot changes.\\\
+
+%Show graph for delta t = 1 and for varying delta t's, figure 4
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure4.jpg}
+   \captionof{figure}{Plot showing the generated curves from the Forward Euler method with varying values of $\Delta t$. In general, as $\Delta t$ is increased, the accuracy for the Forward Euler method decreases, while very small values for $\Delta t$ yield more accurate results. This behavior is represented on the plot above since the leftmost curves were generated with small time-steps ($\Delta t$ is small), while the rightmost curves were generated with large time-steps ($\Delta t$ is large). Refer to Appendix A.3 for MATLAB code.} 
+\end{center}\
+
+From the above plot, it is clear that as the value of $\Delta t$ becomes smaller and smaller, we get a more accurate representation of the simulated model in regard to following the logistic equation. In other words, as we increase the step size, the model deviates more and more from the ideal logistic curve, and therefore, the more inaccurate the model becomes. This is demonstrated in the plot above since the curves, going from left to right, display increasing values of $\Delta t$ from .1 to 10. The curve generated using $\Delta t$ = 1 is near the left side as it is a suitable model. However, the leftmost curve represents the logistic model most accurately while the rightmost curve is very jagged and poorly represents the logistic model. Overall, it is best to choose a $\Delta t$ value that is as small as possible (take very small steps in time) so that when we use the Forward Euler method, our model is accurate (want smallest $\Delta t$ possible for most accurate results).\\\
+
+\section{The Discrete Logistic Equation}
+Finally, we can use the discrete logistic equation to describe the growth of populations whose reproductive rate depends on the population size. This difference equation is one of the simplest nonlinear difference equations that one can use to model a population since it depends on just one parameter, r, which is the growth rate. This equation does, however, have unique behavior that we can examine by creating a MATLAB program to compute the iterations of the discrete logistic equation. This difference equation is shown below and looks similar to the previous logistic model, but now the equation is discrete and the parameter K is equal to one.
+
+\begin{gather*}
+N_{n+1} = f(N_n) = rN_n (1-N_n)\\
+\end{gather*}
+
+%Describe discrete logistic equation as an intro, what we are essentially doing with discrete models, reference the lectures and put ref. at bottom
+
+\subsection*{Manipulating the Discrete Logistic Equation}
+Upon writing a MATLAB program to compute the iterations of the discrete logistic equation, a solution that declines to zero and a solution that rises to a steady-state can be plotted together on the same set of axes. Each of these solutions can be found by manipulating the parameter r. More specifically, we need to find a value for r that is less than one (r $<$ 1) and a value for r that is greater than one (r $>$ 1) to plot these solutions. It is important to note that $N_0$ was taken to be 0.25. For this particular case, it was found that r = 0.8 generated a solution that declined to zero while r = 1.8 generated a solution that rises to a steady-state, which was 0.45 (found analytically). \\\
+
+%include plot of solutions that increase and decrease, figure 5
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure5.jpg}
+   \captionof{figure}{Plot showing a solution that declines to zero along with a solution that rises to a steady state for the discrete logistic equation. The values r = 0.8 and r = 1.8 were used to generate the declining solution and the rising solution, respectively, as shown in the figure. Refer to Appendix A.4 for MATLAB code.} 
+\end{center}\
+
+The MATLAB program can also be used to describe the behavior of different discrete logistic models that have varying values for the parameter r as shown in Figure 7. \\\
+
+%include subplots with varying r values, figure 6
+
+\begin{center}
+   \includegraphics[scale=0.35]{/Users/Kyle/Desktop/AMS333_HW2_Figure6.jpg}
+   \captionof{figure}{Multiple plots showing the solution to the discrete logistic equation with varying values for r. The titles of the plots indicate which value of r was used. In general, it seems that as the value of r increases, more oscillatory behavior is seen. Refer to Appendix A.4 for MATLAB code.} 
+\end{center}\
+
+For r = 2.5, we see a sharp increase in the curve and a stabilization at the value N = 0.6 after few oscillations. For r = 2.8, we see a similar curve as the one mentioned previously, but there are more oscillations around the N = 0.65 value, which eventually becomes the stable value for the plot. For r = 3.2, we see a drastic amount of oscillations with the same minimum and maximum value. In other words, the oscillations are symmetric. For r = 3.5, we see oscillations again, but these are very jagged and uneven compared to the previous oscillatory pattern. For r = 3.56 and r = 3.83, we see an oscillatory pattern like the one in the plot for r = 3.5, but the oscillation area is becoming larger and wider since the maximum value of the plot becomes larger (closer to 1) and the minimum value of the plot becomes smaller (closer to 0). The solution for r = 3.87 can also be plotted separately. In this plot, we can see oscillatory cycles that contribute to the staggered, chaotic and complex behavior of the solution. The oscillations occur from about N = 0.1 to about N = 1, as shown below.
+
+%include r = 3.87 plot, figure 7 
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW2_Figure7.jpg}
+   \captionof{figure}{Plot showing the solution to the discrete logistic equation with r = 3.87. The behavior of this plot can be described as oscillatory. Refer to Appendix A.4 for MATLAB code.} 
+\end{center} 
+
+\section{Conclusion}
+In summary, for the current modeling problem which focused mainly on squirrel population growth, we have used a variety of models to try to analyze and predict how the population will fluctuate and behave at future points in time. These models include the exponential growth model, the logistic model, and the discrete logistic model. We have also used the Forward Euler method to simulate the growth of the squirrel population. Overall, we can see that certain models are more appropriate for predicting future populations of organisms, while others are not, and this depends on the dynamics of the population of interest and what aspects of the environment we consider, such as habitat constraints.
+
+ \vspace{1cm}
+
+%\bibliographystyle{siam}
+%\bibliography{refstmp}
+
+\begin{flushleft}
+References:\\
+\bibliography{refs}
+
+[1] AMS 333: Mathematical Biology, Lecture Notes. "Chapter 3: Population Dynamics".
+
+[2] Barley, Kamal. "Lecture 3.1.1-3.1.2". Lecture, Stony Brook University, October 3, 2019.
+
+%Include MATLAB Appendix
+\end{flushleft}
+\end{document}
+

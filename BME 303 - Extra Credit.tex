@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+
+
+%THIS IS THE BME 303 Extra Credit file
+
+
+\usepackage{graphicx}
+%\usepackage{float}
+\usepackage{caption}
+\usepackage[font=footnotesize]{caption}
+%\usepackage{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[dvips]{epsfig}
+
+\usepackage[left=1in,right=1in,bottom=1.5in,top=1.0in]{geometry}
+\setlength{\topmargin}{0.1in}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\begin{document} 
+
+\begin{titlepage}
+   \begin{center}
+   
+       \vspace*{1cm}
+ 
+       \textbf{\Large{BME 303: Torsional Analysis of Long Bones: Femoral Heads}}
+ 
+       \vspace{0.5cm}
+       
+       \begin{center}
+   		\includegraphics[scale=0.4]{/Users/Kyle/Desktop/torsion.png}
+   		\captionof{figure}{Adapted from: [1]} 
+	  \end{center} 	   
+ 
+       \vspace{1.5cm}
+ 
+       \textbf{\Large{Kyle Baylous}}\\
+       \vspace{1.5cm}
+       \textbf{\Large{SBU ID: 111374388}}
+ 
+       \vfill
+
+ 
+       \vspace{0.8cm}
+ 
+      % \includegraphics[width=0.4\textwidth]
+ 
+       Department of Biomedical Engineering\\
+       Stony Brook University\\
+       12/6/19
+ 
+   \end{center}
+\end{titlepage}
+
+\subsection*{Introduction to Torsional Analysis}
+It is common knowledge that if a straight member of circular cross section is subject to a small twist, the originally parallel cross sections remain parallel. In other words, the small twisting motion of a circular member, or shaft, does not warp the cross section. However, for any other cross section shape, including elliptical or rectangular cross sections, torsion induces both twisting and warping motions, where material particles have displacements in the circumferential and longitudinal directions that may not be uniform. Analysis of small twisting motions in solid or hollow members that have circular
+cross sections and exhibit LEHI behavior have been a common focus in biomechanics since analysis of cylinder-like objects can be applied to long bones. There exist many relevant variables in a torsional analysis of a cylinder-like object which include stress, strain, shear modulus, angle of twist and torsion moment. To formulate all of the relationships between these relevant variables, we can consider a solid circular cylinder that is fixed on one end
+and free on the other, where the free end is subject to a positive twisting moment $M_z$, otherwise known as the torque, T. The shear stress (relative to r, $\theta$ and z) on the longitudinal faces in the circumferential direction is a function of radius, and the shear in the cylinder is related to the applied torque, T, second polar moment of area, J, and radius as shown [2]: $\sigma_{z\theta}(r)=\dfrac{Tr}{J}$. This equation holds only when we consider small-strain LEHI behavior, and this formulation shows that a nonuniform distribution of stress is present, where the shear stress varies linearly with radial position within a circular cylinder under torsion. The shear strain, relative to the same face and direction as the stress, is associated with the angle $\gamma$ that helps to represent the circumferential motion of material particles along the length of the cylinder [2]. For any radius r, we have: $\gamma_r=2\epsilon_{z\theta}(r)$. The shear modulus helps relate the stress and strain as follows, which is similar to the derivation from Hooke's Law for LEHI behavior [2]: $\sigma_{z\theta}(r)=2G\epsilon_{z\theta}(r)$. With torsion, it is also useful to find the maximum angle of twist which is a function of the torque, second polar moment of area, and shear modulus. It is important to note that these parameters can vary with any given position z along the length of the cylinder, but for simplification, the cylinder can be thought of as homogeneous with constant cross-sectional area and constant torsion moment or torque. Therefore, the angle of twist (in radians) can be shown as: $\phi=\int_0^z\dfrac{T(z)}{J(z)G(z)}dz$, and with constant parameters, $\phi=\dfrac{TL}{JG}$, where L is the length of the cylinder [2].
+\begin{center}
+   \includegraphics[scale=0.5]{/Users/Kyle/Desktop/torsion_cyl.jpg}
+   \captionof{figure}{Circular cylinder subjected to equal and opposite end torques. Adapted from: [2].} 
+\end{center}
+
+\subsection*{Application of Torsional Analysis: Literature Review}
+A study conducted by Garnier and affiliates was performed in order to successfully characterize the properties of human cancellous bone from femoral heads (taken from femoral long bone) in shear. In order to analyze and compare the mechanical behavior of human cancellous bone during different shear loading modes, two tests were performed. These tests included a torsion test until failure and a shear test using a sharpened stainless steel tube. The apparent densities and tissue densities were measured on both torsion and shear specimens, and the mean torsion properties discovered were: Shear modulus (G)=289 MPa, ultimate stress $\tau_{torsion}$= 6.1 MPa, ultimate strain $\gamma_{ultimate}$=4.6, yield stress $\tau_{yield}$=4.3 MPa and yield strain $\gamma_{yield}$=1.8. Additionally during the torsion tests, at the maximum point, the mean torque and angle per unit length were $0.7$ Nm and $11.5$ $rad*m^{-1}$, respectively, while the corresponding mean twist angle was $13.9$ degrees. From these results, relations between the mechanical shear properties and density were analyzed and conclusions were presented.
+\begin{center}
+   \includegraphics[scale=0.5]{/Users/Kyle/Desktop/torsion_cancellous.jpg}
+   \captionof{figure}{Coronal section of femoral head and cylindrical specimens taken for analysis. Adapted from: [3].} 
+\end{center}
+
+The results of the previously mentioned study were inclusive of many of the aformentioned torsion variables. However, using the simplified equation for the angle of twist (assuming LEHI behavior), the second polar moment of area, J, could be calculated. This is because the angle of twist equation includes the torque, length of the cylinder, shear modulus and angle of twist itself, which are all known values ($\phi=\dfrac{TL}{JG}$). Using a torque of 0.7 Nm, angle of twist of 0.24 rad, length of 0.02 m, and shear modulus of 289 MPa, all of which were obtained from or referenced in the study, the second polar moment of area was found to be $2.02*10^{-10} m^{4}$ or $202 mm^{4}$. 
+Torsional analysis is crucial in biomechanics as it allows biomedical engineers to study many biological tissues and implants that are subjected to twisting loads, or torsion. From the above literature review and analysis, actual experimental results from shear and torsion studies were utilized in the fundamental equations governing torsion analysis. From this, the equations could be better understood and the magnitudes of each variable or quantity of interest could be investigated to see how changing the specimen and analytical assumptions may change the results of using such equations.
+ \vspace{1cm}
+%\bibliographystyle{siam}
+%\bibliography{refstmp}
+
+\begin{flushleft}
+References:\
+%\bibliography{refs}
+
+[1] https://slideplayer.com/slide/9560507/ \\
+\vspace{0.5cm}
+[2] Jay D. Humphrey and Sherry L. O’Rourke. "An Introduction to Biomechanics: Solids and Fluids, Analysis and Design, Second Edition"\\
+\vspace{0.5cm}
+[3] Garnier, K. Bruyere, et al. "Mechanical characterization in shear of human femoral cancellous bone: torsion and shear tests." Medical engineering and physics 21.9 (1999): 641-649. \
+
+\end{flushleft}
+\end{document}
+

@@ -1,0 +1,245 @@
+\documentclass[12pt]{article}
+
+
+%THIS IS AMS 333 HW 3 FILE
+
+
+\usepackage{graphicx}
+%\usepackage{float}
+\usepackage{caption}
+\usepackage[font=footnotesize]{caption}
+%\usepackage{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[dvips]{epsfig}
+
+\usepackage[left=1in,right=1in,bottom=1.5in,top=1.0in]{geometry}
+\setlength{\topmargin}{0.1in}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\begin{document} 
+
+\begin{titlepage}
+   \begin{center}
+   
+       \vspace*{1cm}
+ 
+       \textbf{\Large{AMS 333: Homework 3}}
+ 
+       \vspace{0.5cm}
+ 
+       \vspace{1.5cm}
+ 
+       \textbf{\Large{Kyle Baylous}}\\
+       \vspace{1.5cm}
+       \textbf{\Large{SBU ID: 111374388}}
+ 
+       \vfill
+
+ 
+       \vspace{0.8cm}
+ 
+      % \includegraphics[width=0.4\textwidth]
+ 
+       Applied Mathematics and Statistics\\
+       Stony Brook University\\
+       11/12/19
+ 
+   \end{center}
+\end{titlepage}
+
+\section{Introduction to Population Dynamics: Competition }
+
+Competition for resources can be in the form of intraspecies or interspecies competition. These types of interactions are different than common predator-prey relationships in that predator-prey relationships can be described as direct interactions between species [1]. More specifically, many species can interact more indirectly as they compete for very similar resources. In the case of intraspecies competition, individuals of the same species compete for resources, while in the case of interspecies competition, individuals of two different species compete for resources [1]. These types of competitive systems can be analyzed using the model below and the dynamics can be understood by determining the null clines and equilibrium points of the system and seeing when such points are biologically reasonable. Additionally, this type of analysis can help us determine whether or not two competing species can successfully coexist. For the model below, it is important to note that variables $U_1$ and $U_2$ represent the population of the two species at a certain time (t), parameters $R_{0,1}$ and $R_{0,2}$ represent the per capita growth rates for each species, parameters $K_1$ and $K_2$ represent the carrying capacities of each species, and lastly, parameters ${\alpha}$ and ${\beta}$ represent interspecies competition coefficients:
+
+\begin{gather*}
+\dfrac{dU_1}{dt} = R_{0,1}U_1\Big(1 - \dfrac{U_1+{\alpha}U_2}{K_1}\Big) 
+\end{gather*}
+\begin{gather*}
+\dfrac{dU_2}{dt} = R_{0,2}U_2\Big(1 - \dfrac{U_2+{\beta}U_1}{K_2}\Big) 
+\end{gather*}\
+
+
+\section{Population Dynamics of Rhizopertha Dominica and Oryzaephilus Surinamensis}
+Dynamical analysis of the competitive system between two graminivorous beetle species, Rhizopertha Dominica and Oryzaephilus Surinamensis, can be conducted to see how such populations affect one another in the cases of interaction and no interaction between species. Such analysis will yield results that indicate what will happen to the populations of beetles over a long period of time.
+
+\subsection*{Analysis of Interspecies Competition: No Interaction Between Species}
+
+From the plots showing each beetle species growing alone in Figure 1, we can see that each population initially grows rapidly but plateaus at its respective carrying capacity due to the logistic nature of intraspecies competitive growth (no interspecies competition). Generally speaking, in the absence of interspecific competition, the population of each species will grow logistically to carrying capacity. This can be explained in terms of the interspecies competition model shown previously because, in the case of species 1, ${\alpha}$ = 0, which is an interspecies competition coefficient, and $U_2 = 0$ when there is no interspecies competition, so the population of species 1 grows logistically to its respective carrying capacity, $K_1$. In the case of species 2, ${\beta}$ = 0, which is an interspecies competition coefficient, and $U_1 = 0$ when there is no interspecies competition, so the population of species 2 grows logistically to its respective carrying capacity, $K_2$.  
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW3_PartA.jpg}
+   \captionof{figure}{Plot showing intraspecies competitive growth for each beetle species. The observed beetle data for Rhizopertha Dominica is shown in red while the observed beetle data for Oryzaephilus Surinamensis is represented by the blue curve. The population of each beetle species will grow logistically to carrying capacity. Refer to Appendix A.1 for MATLAB code.} 
+\end{center}
+
+
+\subsection*{Analysis of Interspecies Competition: Interaction Between Species}
+
+From the plot showing interspecies competition data between Rhizopertha Dominica and Oryzaephilus Surinamensis in Figure 2, it can be observed that the populations fluctuate initially, with one dominating the other over a short time period. However, as time increases, both populations reach a relatively constant population size, where Rhizopertha Dominica reaches a population size of about 260, while Oryzaephilus Surinamensis reaches a population size of about 420. It is important to note that Oryzaephilus Surinamensis begins to dominate the other species at a constant population size as time goes on, but the population of Rhizopertha Dominica does not diminish to zero, as it instead reaches its own stable population.
+
+\begin{center}
+   \includegraphics[scale=0.38]{/Users/Kyle/Desktop/AMS333_HW3_PartB.jpg}
+   \captionof{figure}{Plot showing interspecies competitive growth between the two beetle species. The observed beetle data for Rhizopertha Dominica is shown in red while the observed beetle data for Oryzaephilus Surinamensis is represented in blue. The populations initially fluctuate, but eventually, each species reaches a relatively constant population size. Refer to Appendix A.2 for MATLAB code.} 
+\end{center}
+
+\subsection*{Simulated Interspecies Competition}
+
+Interspecies competition between the two beetle species can be modeled as shown in Figure 3 using the equations shown below:
+
+\begin{gather*}
+\dfrac{dU_1}{dt} = R_{0,1}U_1\Big(1 - \dfrac{U_1+{\alpha}U_2}{K_1}\Big) 
+\end{gather*}
+\begin{gather*}
+\dfrac{dU_2}{dt} = R_{0,2}U_2\Big(1 - \dfrac{U_2+{\beta}U_1}{K_2}\Big) 
+\end{gather*}\
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW3_PartC.jpg}
+   \captionof{figure}{Plot showing interspecies competitive growth between the two beetle species. The observed beetle data for Rhizopertha Dominica is shown with red circles while the population model for this species is shown as the green line. The observed beetle data for Oryzaephilus Surinamensis is represented with blue circles while the population model for this species is shown as the black line. It is clear that as time goes on, each species reaches a constant population size. Refer to Appendix A.3 for MATLAB code.} 
+\end{center}
+
+
+\subsection*{Finding Equilibrium Points and Observing Population Behavior }
+%SHOW EQUILIBRIA CALCULATIONS
+
+The equilibria for the model shown previously can be found as follows, following the general procedure of setting each equation equal to zero, followed by finding each null cline and analyzing where such null clines intersect:
+%dU1/dt now
+\begin{flushleft}
+Start with $\dfrac{dU_1}{dt}$ equation:
+\end{flushleft}
+\begin{gather*}
+\dfrac{dU_1}{dt} = R_{0,1}U_1\Big(1 - \dfrac{U_1+{\alpha}U_2}{K_1}\Big) \\
+\end{gather*}
+Set $\dfrac{dU_1}{dt}$ equal to zero:
+\begin{gather*}
+R_{0,1}U_1\Big(1 - \dfrac{U_1+{\alpha}U_2}{K_1}\Big) = 0 \\
+\end{gather*}\
+Solve for the components that must be zero:	
+\begin{gather*}
+ R_{0,1}U_1 = 0\\\
+ \Big(1 - \dfrac{U_1+{\alpha}U_2}{K_1}\Big) = 0\\
+\end{gather*}
+For $U_1$, $U_1 = 0$ is a null cline, solve for the other null cline:
+\begin{gather*}
+\Big(\dfrac{U_1+{\alpha}U_2}{K_1}\Big) = 1 \\\
+U_1+{\alpha}U_2 = K_1 \\\
+\end{gather*}
+We can then solve for the other null cline, which is a linear function of both $U_1$ and $U_2$:
+\begin{gather*}
+U_1 = K_1 - {\alpha}U_2 \\\
+\end{gather*}
+
+%dU2/dt now
+
+\begin{flushleft}
+Now, follow the same procedure by starting with the $\dfrac{dU_2}{dt}$ equation:
+\end{flushleft}
+\begin{gather*}
+\dfrac{dU_2}{dt} = R_{0,2}U_2\Big(1 - \dfrac{U_2+{\beta}U_1}{K_2}\Big) \\
+\end{gather*}
+Set $\dfrac{dU_2}{dt}$ equal to zero:
+\begin{gather*}
+R_{0,2}U_2\Big(1 - \dfrac{U_2+{\beta}U_1}{K_2}\Big) = 0 \\
+\end{gather*}\
+Solve for the components that must be zero:	
+\begin{gather*}
+R_{0,2}U_2 = 0\\\
+\Big(1 - \dfrac{U_2+{\beta}U_1}{K_2}\Big) = 0\\
+\end{gather*}
+For $U_2$, $U_2 = 0$ is a null cline, solve for the other null cline:
+\begin{gather*}
+\Big(\dfrac{U_2+{\beta}U_1}{K_2}\Big) = 1 \\\
+U_2+{\beta}U_1 = K_2 \\\
+\end{gather*}
+We can then solve for the other null cline, which again is a linear function of both $U_1$ and $U_2$:
+\begin{gather*}
+U_2 = K_2 - {\beta}U_1 \\\
+\end{gather*}
+
+Each of the variables has two null clines, where one consists of its own axis and the other is a linear function of $U_1$ and $U_2$. Now, to find the equilibrium points of the system, we can consider the points where the null clines intersect. There are four possible intersection points, as shown below:\\
+\begin{flushleft}
+Equilibrium point 1 (Extinction equilibrium): $U_1 = 0$ and $U_2 = 0$.\\
+\end{flushleft} 
+\begin{flushleft}
+Equilibrium point 2 (Competitive exclusion): $U_1 = 0$ and $U_2 = K_2 - {\beta}U_1$. Substitute in $U_1 = 0$ to get $U_2 = K_2$. \\
+\end{flushleft} 
+\begin{flushleft}
+Equilibrium point 3 (Competitive exclusion): $U_1 = K_1 - {\alpha}U_2$ and $U_2 = 0$. Substitute in $U_2 = 0$ to get $U_1 = K_1$. \\
+\end{flushleft} 
+\begin{flushleft}
+Equilibrium point 4 (Cooperative equilibrium): $U_1 = K_1 - {\alpha}U_2$ and $U_2 =  K_2 - {\beta}U_1$. Substituting in $U_2 =  K_2 - {\beta}U_1$ into $U_1 = K_1 - {\alpha}U_2$ yields $U_1 = \dfrac{{\alpha}K_2 - K_1}{{\alpha}{\beta} - 1}$.
+Then, substituting in $U_1 = K_1 - {\alpha}U_2$ into $U_2 =  K_2 - {\beta}U_1$ yields $U_2 = \dfrac{{\beta}K_1 - K_2}{{\alpha}{\beta} - 1}$. \\
+\end{flushleft}  
+ 
+\begin{flushleft}
+Therefore, the four stationary points are ($U_1$,$U_2$) = (0,0), ($U_1$,$U_2$) = (0,$K_2$), ($U_1$,$U_2$) = ($K_1$,0) and ($U_1$,$U_2$) = ($\dfrac{{\alpha}K_2 - K_1}{{\alpha}{\beta} - 1}$, $\dfrac{{\beta}K_1 - K_2}{{\alpha}{\beta} - 1}$). 
+\end{flushleft} 
+
+\begin{center}
+   \includegraphics[scale=0.4]{/Users/Kyle/Desktop/AMS333_HW3_PartD.jpg}
+   \captionof{figure}{Plot showing dynamics of the competitive beetle populations. We can see that weakly competitive systems lead to stable coexistence due to a stable stationary point with both populations being non-zero. When considering the velocity arrows in all regions of the plot, the general direction of motion is towards the central equilibrium point, and therefore, the point is stable. It is important to note that each variable has two non-zero null clines and two zero null clines, as shown in the legend. Additionally, the model equilibria are represented by red circles in the plot. Refer to Appendix A.4 for MATLAB code.} 
+\end{center}
+
+After plotting the null clines and equilibria as shown in Figure 4, we can observe the behavior of the populations by considering the dynamics in each region of the plot. In the region below and to the left of the plotted null clines, both populations are increasing, meaning that both populations are below their carrying capacities and thus increase. In the region above both null clines, both populations are decreasing with a general trend being downwards and to the left. This is indicating that the populations are decaying since both are above their carrying capacities. There is also a region above and slightly to the left of the central (non-zero) equilibrium point in which the population of species 1 is increasing but the population of species 2 is decreasing. Similarly, in the region below and slightly to the right of the central (non-zero) equilibrium point, species 1 is decreasing while species 2 is increasing. The general idea in the two previously discussed regions is that one population is above its carrying capacity, while the other has yet to reach its carrying capacity. Overall, we can see that all velocity arrows point towards the stable equilibrium point at the central intersection of the null clines (non-zero equilibrium point). The stable equilibrium point indicates that the two species populations can stably coexist regardless of the initial populations of the species themselves, thereby displaying cooperative equilibrium. In other words, over time, the two species will reach two stable and constant population densities. Therefore, assuming that the experimental conditions hold, we can predict that the populations of the beetles will stably coexist over a long period of time.
+
+\subsection*{Simulating the System Using the Forward Euler Method and Comparing Results}
+
+Using the initial populations from the provided beetle data with a time step of 0.01 days, we can determine how the beetle populations will vary over the maximum time indicated in the data by simulating the system using the Forward Euler method. The results of this and the ode45 function in MATLAB are shown in the following figures.
+
+\begin{center}
+   \includegraphics[scale=0.35]{/Users/Kyle/Desktop/AMS333_HW3_PartE01.jpg}
+   \captionof{figure}{Plot showing the two populations of beetles versus time when simulating this system using the ode45 function in MATLAB. The general trends of the simulation are very similar to the trends shown in the data plot for interspecies competition. Refer to Appendix A.3 for MATLAB code.} 
+\end{center}
+
+\begin{center}
+   \includegraphics[scale=0.3]{/Users/Kyle/Desktop/AMS333_HW3_PartE02.jpg}
+   \captionof{figure}{Plot showing the two populations of beetles plotted against each other after simulating this system using the ode45 function in MATLAB. We can see that the initial part of the curve is slightly nonlinear, but the rest of the curve is highly linear. This indicates that both species reach a stable population that does not change over time. Refer to Appendix A.3 for MATLAB code.}
+\end{center}
+
+
+\begin{center}
+   \includegraphics[scale=0.3]{/Users/Kyle/Desktop/AMS333_HW3_PartE1.jpg}
+   \captionof{figure}{Plot showing the two populations of beetles versus time when simulating this system using the Forward Euler method. The general trends of the simulation are very similar to the trends shown in the data plot for interspecies competition. Refer to Appendix A.5 for MATLAB code.} 
+\end{center}
+
+\begin{center}
+   \includegraphics[scale=0.35]{/Users/Kyle/Desktop/AMS333_HW3_PartE2.jpg}
+   \captionof{figure}{Plot showing the two populations of beetles plotted against each other after simulating this system using the Forward Euler method. We can see that the initial part of the curve is slightly nonlinear, but the rest of the curve is highly linear. This indicates that both species reach a stable population that does not change over time. Refer to Appendix A.5 for MATLAB code.} 
+\end{center}
+
+Upon comparing results of the Forward Euler system simulation with the results from using the ode45 function in MATLAB, it is clear that the results from using both methods to find a solution to the system are very similar to one another, but the accuracy of the Forward Euler method depends on the step size taken when simulating the system. When taking smaller and smaller time steps, the results of the Forward Euler method become more and more accurate. In other words, when very small step sizes are take, the results from the Forward Euler method are accurate and comparable to that of the ode45 function in MATLAB used to solve the ordinary differential equation system.
+
+\begin{center}
+   \includegraphics[scale=0.35]{/Users/Kyle/Desktop/AMS333_HW3_PartE3.jpg}
+   \captionof{figure}{Plot showing the two populations of beetles after simulating this system using the Forward Euler method and ode45 function in MATLAB. It is clear that the accuracy of the Forward Euler method depends on the step size taken. Refer to Appendix A.5 for MATLAB code.} 
+\end{center}
+
+
+\subsection*{Summary of Results}
+In summary, when the beetle populations are not interacting, or growing alone, the population of each beetle species will grow logistically to the respective carrying capacity. When interspecies competition is considered and the beetles are interacting, the populations initially fluctuate, but eventually, each species reaches a relatively constant population size. This is due to the nature of this specific interaction model, because for this species interaction model, the two beetle populations can stably coexist. The stable equilibrium point near the center of the null cline plot indicates that the two species populations can stably coexist regardless of the initial populations of the species themselves. In other words, over time, the two species will reach two stable and constant population densities. Therefore, assuming that the experimental conditions hold, we can predict that the populations of the beetles will stably coexist over a long period of time (cooperative equilibrium). Lastly, when very small step sizes are take, the results from the Forward Euler method are accurate and comparable to that of the ode45 function in MATLAB used to solve the system of ordinary differential equations.
+
+ 
+ \vspace{1cm}
+
+%\bibliographystyle{siam}
+%\bibliography{refstmp}
+
+\begin{flushleft}
+References:\\
+\bibliography{refs}
+
+[1] AMS 333: Mathematical Biology, Lecture Notes. "Chapter 3: Population Dynamics".
+
+%[2] Barley, Kamal. "Lecture 3.1.1-3.1.2". Lecture, Stony Brook University, October 3, 2019.
+
+%Include MATLAB Appendix
+\end{flushleft}
+\end{document}
+
